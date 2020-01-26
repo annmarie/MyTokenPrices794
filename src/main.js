@@ -8,9 +8,13 @@ const fetchApiCalls = (apis) => Promise.all(apis.map(api =>
   .then(api.parser)))
 
 const main = (apis) => fetchApiCalls(apis)
-  .then(d => d.map(r => _.isEmpty(r.errors) ? r.data : [r.data, r.errors]))
+  .then(d => d.map(r => {
+    if (_.isEmpty(_.get(r, 'errors')) === false)
+      console.error(r.errors)
+    return _.get(r, 'data')
+  }))
   .then(d => {
-    d.forEach(r => console.log(r))
+    d.forEach(r => console.table(r))
     console.log(moment(new Date()).format("lll"))
     console.log('---')
   })

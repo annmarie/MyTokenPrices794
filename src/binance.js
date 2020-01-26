@@ -5,7 +5,17 @@ const _ = require('lodash')
 // 1. Binance does not have US currency listings for some coins.
 //  Using the BTCUSDT price to do the math and get US dollar price.
 // 2. POET Coin is worth less than a penny. round to 3 decimal places.
-const tags = [ 'BTCUSDT', 'ZECBTC', 'EOSUSDT', 'XLMUSDT', 'ADAUSDT', 'POEBTC' ]
+const tags = [
+  'BTCUSDT',
+  'ZECBTC',
+  'EOSUSDT',
+  //'XRPUSDT',
+  'RDNBTC',
+  'XLMUSDT',
+  'ADAUSDT',
+  'GNTBTC',
+  'POEBTC'
+]
 const formatUrl = (tag) =>
   `https://api.binance.com/api/v3/ticker/price?symbol=${tag}`
 const binance = {
