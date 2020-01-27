@@ -24,7 +24,7 @@ const binance = {
     const data = {}
     const errors = []
     const btcObj = _.find(d, ['symbol', 'BTCUSDT'])
-    const btcPrice = _.get(btcObj, 'price')
+    const btcPrice = _.get(btcObj, 'price' 0)
     d.splice(d.indexOf(btcObj), 1)
     d.forEach(r => {
       const tag = _.get(r, 'symbol')
